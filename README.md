@@ -1,4 +1,4 @@
-# react-query-spacex
+# nextjs-hasura-firebase
 
 このアプリケーションは、<a href="https://www.udemy.com/course/hasura-nextjs-firebase-hasuragraphql-web/">こちらの教材</a>を参考にしました。<br>
 Nextjs + React-query + Firebase + Hasura + Redux-toolkit + TypeScriptによるGraphQL Web開発手法を学ぶ Next.js(TypeScript)アプリケーションです。
