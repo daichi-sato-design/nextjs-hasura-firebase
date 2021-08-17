@@ -9,6 +9,7 @@ export const useUserChanged = () => {
   const cookie = new Cookie()
   const router = useRouter()
   const HASURA_TOKEN_KEY = 'https://hasura.io/jwt/claims'
+
   useEffect(() => {
     // 新しいユーザー作られたときや、ユーザーがログインしてきた時に実行
     const unSubUser = firebase.auth().onAuthStateChanged(async (user) => {
@@ -40,5 +41,6 @@ export const useUserChanged = () => {
 
     return () => unSubUser()
   }, [])
+
   return {}
 }

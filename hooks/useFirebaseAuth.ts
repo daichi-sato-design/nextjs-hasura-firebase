@@ -9,13 +9,16 @@ export const useFirebaseAuth = () => {
   const emailChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value)
   }, [])
+
   const pwChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value)
   }, [])
+
   const resetInput = useCallback(() => {
     setEmail('')
     setPassword('')
   }, [])
+
   const toggleMode = useCallback(() => {
     setIsLogin(!isLogin)
   }, [isLogin])
