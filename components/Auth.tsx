@@ -1,11 +1,12 @@
 import { VFC } from 'react'
 import Link from 'next/link'
+
+import firebase from '../firebaseConfig'
+import { useFirebaseAuth } from '../hooks/useFirebaseAuth'
 import {
   ChevronDoubleRightIcon,
   SwitchVerticalIcon,
 } from '@heroicons/react/solid'
-import { useFirebaseAuth } from '../hooks/useFirebaseAuth'
-import firebase from '../firebaseConfig'
 
 export const Auth: VFC = () => {
   // 現在のログインしているユーザーを取得
@@ -20,6 +21,7 @@ export const Auth: VFC = () => {
     authUser,
     toggleMode,
   } = useFirebaseAuth()
+
   return (
     <>
       <form

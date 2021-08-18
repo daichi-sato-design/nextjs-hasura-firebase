@@ -2,10 +2,10 @@ import { VFC } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-import { useLogout } from '../hooks/useLogout'
-import { ChevronDoubleLeftIcon, LogoutIcon } from '@heroicons/react/solid'
 import firebase from '../firebaseConfig'
+import { useLogout } from '../hooks/useLogout'
 import { Layout } from '../components/Layout'
+import { ChevronDoubleLeftIcon, LogoutIcon } from '@heroicons/react/solid'
 
 const Tasks: VFC = () => {
   const router = useRouter()
