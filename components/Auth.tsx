@@ -40,7 +40,7 @@ export const Auth: VFC = () => {
         <input
           className="my-3 px-3 py-1 border border-gray-300"
           placeholder="Password ?"
-          type="text"
+          type="password"
           id="password"
           value={password}
           onChange={pwChange}
@@ -49,7 +49,7 @@ export const Auth: VFC = () => {
         <button
           disabled={!email || !password}
           type="submit"
-          className="disable:opacity-40 mt-5 py-1 px-3 text-white bg-indigo-600 hover:bg-indigo-700 rounded focus:outline-none"
+          className="disabled:opacity-40 mt-5 py-1 px-3 text-white bg-indigo-600 hover:bg-indigo-700 rounded focus:outline-none"
         >
           {isLogin ? 'Login' : 'Register'}
         </button>
