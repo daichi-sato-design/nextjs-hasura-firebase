@@ -13,7 +13,7 @@ const Tasks: VFC = () => {
   const { logout } = useLogout()
   const user = firebase.auth().currentUser
   return (
-    <Layout title="tasks">
+    <Layout title="Tasks">
       <p className="my-3">{user?.email}</p>
       <LogoutIcon
         className="h-5 w-5 my-3 text-blue-500 cursor-pointer"
