@@ -63,7 +63,7 @@ export const CREATE_TASK = gql`
   }
 `
 // UPDATE_TAKS Taskのtitleを更新
-export const UPDATE_TAKS = gql`
+export const UPDATE_TASK = gql`
   mutation UpdateTask($id: uuid!, $title: String!) {
     update_tasks_by_pk(pk_columns: { id: $id }, _set: { title: $title }) {
       id
