@@ -38,9 +38,10 @@ export const useAppMutate = () => {
     (title: string) => graphQLClient.request(CREATE_TASK, { title }),
     {
       onSuccess: (res) => {
-        // previousTodos 既存のCacheの一覧を取得
+        // 既存のCache(key: tasks)のを取得
         const previousTodos = queryClient.getQueryData<Task[]>('tasks')
         if (previousTodos) {
+          // Cache(key; tasks)の上書き[新しいTaskをCacheに追加]
           queryClient.setQueriesData('tasks', [
             ...previousTodos,
             res.insert_tasks_one,
@@ -55,8 +56,10 @@ export const useAppMutate = () => {
     (task: EditTask) => graphQLClient.request(UPDATE_TASK, task),
     {
       onSuccess: (res, variables) => {
+        // 既存のCache(key: tasks)のを取得
         const previousTodos = queryClient.getQueryData<Task[]>('tasks')
         if (previousTodos) {
+          // Cache(key; tasks)の上書き[idが一致したTaskのみCacheを上書き]
           queryClient.setQueryData<Task[]>(
             'tasks',
             previousTodos.map((task) =>
@@ -73,8 +76,10 @@ export const useAppMutate = () => {
     (id: string) => graphQLClient.request(DELETE_TASK, { id }),
     {
       onSuccess: (_, variables) => {
+        // 既存のCache(key: tasks)のを取得
         const previousTodos = queryClient.getQueryData<Task[]>('tasks')
         if (previousTodos) {
+          // Cache(key; tasks)の上書き[idが一致しないものを抽出しCacheを上書き]
           queryClient.setQueryData<Task[]>(
             'tasks',
             previousTodos.filter((task) => task.id !== variables)
@@ -89,8 +94,10 @@ export const useAppMutate = () => {
     (content: string) => graphQLClient.request(CREATE_NEWS, { content }),
     {
       onSuccess: (res) => {
+        // 既存のCache(key: news)のを取得
         const previousNews = queryClient.getQueryData<News[]>('news')
         if (previousNews) {
+          // Cache(key; news)の上書き[新しいNewsをCacheに追加]
           queryClient.setQueryData('news', [
             ...previousNews,
             res.insert_news_one,
@@ -105,8 +112,10 @@ export const useAppMutate = () => {
     (news: EditNews) => graphQLClient.request(UPDATE_NEWS, news),
     {
       onSuccess: (res, variable) => {
+        // 既存のCache(key: news)のを取得
         const previousNews = queryClient.getQueryData<News[]>('news')
         if (previousNews) {
+          // Cache(key; news)の上書き[idが一致したNewsのみCacheを上書き]
           queryClient.setQueryData<News[]>(
             'news',
             previousNews.map((news) =>
@@ -123,8 +132,10 @@ export const useAppMutate = () => {
     (id: string) => graphQLClient.request(DELETE_NEWS, { id }),
     {
       onSuccess: (_, variable) => {
+        // 既存のCache(key: news)のを取得
         const previousNews = queryClient.getQueryData<News[]>('news')
         if (previousNews) {
+          // Cache(key; news)の上書き[idが一致しないものを抽出しCacheを上書き]
           queryClient.setQueriesData<News[]>(
             'news',
             previousNews.filter((news) => news.id !== variable)
