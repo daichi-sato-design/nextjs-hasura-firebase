@@ -112,6 +112,7 @@ export const useAppMutate = () => {
     (news: EditNews) => graphQLClient.request(UPDATE_NEWS, news),
     {
       onSuccess: (res, variable) => {
+        // 既存のCache(key: news)のを取得
         const previousNews = queryClient.getQueryData<News[]>('news')
         if (previousNews) {
           // Cache(key; news)の上書き[idが一致したNewsのみCacheを上書き]
