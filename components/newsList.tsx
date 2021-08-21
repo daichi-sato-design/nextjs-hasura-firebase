@@ -1,7 +1,7 @@
 import { VFC, memo } from 'react'
 import { useQueryNews } from '../hooks/useQueryNews'
 
-import { NewsItemMemo } from './newsItem'
+import { NewsItemMemo } from './NewsItem'
 
 const NewsList: VFC = () => {
   const { status, data } = useQueryNews()
