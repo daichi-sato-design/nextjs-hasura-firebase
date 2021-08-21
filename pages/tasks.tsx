@@ -6,13 +6,15 @@ import firebase from '../firebaseConfig'
 import { useLogout } from '../hooks/useLogout'
 import { Layout } from '../components/Layout'
 import { ChevronDoubleLeftIcon, LogoutIcon } from '@heroicons/react/solid'
-import { NewsListMemo } from '../components/newsList'
+import { NewsListMemo } from '../components/NewsList'
+import { NewsEditMemo } from '../components/NewsEdit'
 
 const Tasks: VFC = () => {
   const router = useRouter()
   // カスタムフック(useLogout)から関数を取得
   const { logout } = useLogout()
   const user = firebase.auth().currentUser
+  console.log(user)
   return (
     <Layout title="Tasks">
       <p className="my-3">{user?.email}</p>
@@ -25,7 +27,10 @@ const Tasks: VFC = () => {
       />
 
       <p className="mt-10 mb-5 text-blue-500 text-xl font-bold">News Edit</p>
-      <NewsListMemo />
+      <div className="grid grid-cols-2 gap-40">
+        <NewsListMemo />
+        <NewsEditMemo />
+      </div>
 
       <Link href="/">
         <div className="mt-20 flex items-center cursor-pointer">
