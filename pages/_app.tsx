@@ -1,17 +1,38 @@
-import '../styles/globals.css'
-import { VFC } from 'react'
 import { AppProps } from 'next/app'
+import { VFC, useState } from 'react'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import { Provider } from 'react-redux'
-
 import { store } from '../app/store'
 import { useUserChanged } from '../hooks/useUserChanged'
 
+import '../styles/globals.css'
+
 const MyApp: VFC = ({ Component, pageProps }: AppProps) => {
   const {} = useUserChanged()
+
+  // useStateを使用し、QueryClientのステートを作成
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            retry: false, // react-queryはデフォルトで、fetchを3回までリトライする
+            refetchOnWindowFocus: false,
+          },
+        },
+      })
+  )
+
+  // QueryClientProvider React-queryでCacheをAPP全体で使用するためのラッピング
+  // Provider ReduxをAppで使用するためのラッピング
   return (
-    <Provider store={store}>
-      <Component {...pageProps} />
-    </Provider>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   )
 }
 
