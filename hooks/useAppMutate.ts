@@ -49,6 +49,9 @@ export const useAppMutate = () => {
         }
         dispatch(resetEditedTask())
       },
+      onError: () => {
+        dispatch(resetEditedTask())
+      },
     }
   )
 
@@ -69,6 +72,9 @@ export const useAppMutate = () => {
         }
         dispatch(resetEditedTask())
       },
+      onError: () => {
+        dispatch(resetEditedTask())
+      },
     }
   )
 
@@ -87,6 +93,9 @@ export const useAppMutate = () => {
         }
         dispatch(resetEditedTask())
       },
+      onError: () => {
+        dispatch(resetEditedTask())
+      },
     }
   )
 
@@ -103,6 +112,9 @@ export const useAppMutate = () => {
             res.insert_news_one,
           ])
         }
+        dispatch(resetEditedNews())
+      },
+      onError: () => {
         dispatch(resetEditedNews())
       },
     }
@@ -125,6 +137,9 @@ export const useAppMutate = () => {
         }
         dispatch(resetEditedNews())
       },
+      onError: () => {
+        dispatch(resetEditedNews())
+      },
     }
   )
 
@@ -141,6 +156,9 @@ export const useAppMutate = () => {
             previousNews.filter((news) => news.id !== variable)
           )
         }
+        dispatch(resetEditedNews())
+      },
+      onError: () => {
         dispatch(resetEditedNews())
       },
     }
