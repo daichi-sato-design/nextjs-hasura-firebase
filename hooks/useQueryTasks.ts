@@ -20,7 +20,7 @@ export const fetchTasks = async () => {
   return data
 }
 
-export const useQueryGetTasks = () => {
+export const useQueryTasks = () => {
   useEffect(() => {
     graphQLClient = new GraphQLClient(endpoint, {
       headers: {
