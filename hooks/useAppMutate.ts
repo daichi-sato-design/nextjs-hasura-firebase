@@ -42,7 +42,7 @@ export const useAppMutate = () => {
         const previousTodos = queryClient.getQueryData<Task[]>('tasks')
         if (previousTodos) {
           // Cache(key; tasks)の上書き[新しいTaskをCacheに追加]
-          queryClient.setQueriesData('tasks', [
+          queryClient.setQueryData('tasks', [
             ...previousTodos,
             res.insert_tasks_one,
           ])
@@ -136,7 +136,7 @@ export const useAppMutate = () => {
         const previousNews = queryClient.getQueryData<News[]>('news')
         if (previousNews) {
           // Cache(key; news)の上書き[idが一致しないものを抽出しCacheを上書き]
-          queryClient.setQueriesData<News[]>(
+          queryClient.setQueryData<News[]>(
             'news',
             previousNews.filter((news) => news.id !== variable)
           )
