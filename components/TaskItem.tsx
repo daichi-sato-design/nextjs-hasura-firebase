@@ -12,7 +12,13 @@ interface Props {
 const TaskItem: VFC<Props> = ({ task }) => {
   const dispatch = useDispatch()
   const { deleteTaskMutation } = useAppMutate()
-  if (deleteTaskMutation.isLoading) return <div>Deleting...</div>
+
+  if (deleteTaskMutation.isLoading) {
+    return <p>Deleting...</p>
+  }
+  if (deleteTaskMutation.error) {
+    return <p>Error</p>
+  }
 
   return (
     <li className="my-3">
