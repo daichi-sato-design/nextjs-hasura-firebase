@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import { Provider } from 'react-redux'
 import { store } from '../app/store'
 import { useUserChanged } from '../hooks/useUserChanged'
+import { Hydrate } from 'react-query/hydration'
 
 import '../styles/globals.css'
 
@@ -28,9 +29,11 @@ const MyApp: VFC = ({ Component, pageProps }: AppProps) => {
   // Provider ReduxをAppで使用するためのラッピング
   return (
     <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
+      <Hydrate state={pageProps.dehydratedState}>
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+      </Hydrate>
       <ReactQueryDevtools />
     </QueryClientProvider>
   )
