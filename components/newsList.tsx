@@ -11,13 +11,11 @@ const NewsList: VFC = () => {
 
   return (
     <div>
-      {data?.map((news) => (
-        <div key={news.id}>
-          <ul>
-            <NewsItemMemo news={news} />
-          </ul>
-        </div>
-      ))}
+      <ul>
+        {data?.map((news) => (
+          <NewsItemMemo key={news.id} news={news} />
+        ))}
+      </ul>
     </div>
   )
 }

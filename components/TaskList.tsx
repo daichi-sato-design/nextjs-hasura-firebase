@@ -9,13 +9,11 @@ const TaskList: VFC = () => {
 
   return (
     <div>
-      {data?.map((task) => (
-        <div key={task.id}>
-          <ul>
-            <TaskItemMemo task={task} />
-          </ul>
-        </div>
-      ))}
+      <ul>
+        {data?.map((task) => (
+          <TaskItemMemo key={task.id} task={task} />
+        ))}
+      </ul>
     </div>
   )
 }
