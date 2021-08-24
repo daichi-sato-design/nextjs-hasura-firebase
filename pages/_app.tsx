@@ -26,6 +26,7 @@ const MyApp: VFC = ({ Component, pageProps }: AppProps) => {
   )
 
   // QueryClientProvider React-queryでCacheをAPP全体で使用するためのラッピング
+  // Hydrate SSGでfetchしたデータをComponentで使用できるようにラッピング
   // Provider ReduxをAppで使用するためのラッピング
   return (
     <QueryClientProvider client={queryClient}>
